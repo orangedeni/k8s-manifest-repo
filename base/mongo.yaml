@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: 937129046285.dkr.ecr.ap-northeast-2.amazonaws.com/mongo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017

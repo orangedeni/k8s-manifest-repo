@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: alpine
+  template:
+    metadata:
+      labels:
+        app: alpine
+    spec:
+      containers:
+        - name: alpine
+          image: 937129046285.dkr.ecr.ap-northeast-2.amazonaws.com/alpine:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
